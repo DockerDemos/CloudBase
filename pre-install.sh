@@ -29,10 +29,16 @@ touch $HOME/.ssh/authorized_keys
 chown -R $USER.$GROUP $HOME
 
 SSHCONF='/etc/ssh/sshd_config'
+PAMCONF='/etc/pam.d/sshd'
 
 ssh-keygen -q -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
+
+# NO PASSWORDS!
 sed -i 's/PasswordAuthentication yes/PasswordAuthentication no/' $SSHCONF
-sed -i 's/UsePAM yes/UsePAM no/' $SSHCONF
+
+# Kerberos-related errors, but we're not using kerb
 sed -i 's/GSSAPIAuthentication yes/#GSSAPIAuthentication yes/' $SSHCONF
 sed -i 's/GSSAPICleanupCredentials yes/#GSSAPICleanupCredentials yes/' $SSHCONF
 
+# Required changed to optional - Docker drops autid capabilities
+sed -i 's/session    required     pam_loginuid.so/session    optional     /' $PAMCONF
