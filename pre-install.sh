@@ -41,4 +41,5 @@ sed -i 's/GSSAPIAuthentication yes/#GSSAPIAuthentication yes/' $SSHCONF
 sed -i 's/GSSAPICleanupCredentials yes/#GSSAPICleanupCredentials yes/' $SSHCONF
 
 # Required changed to optional - Docker drops autid capabilities
-sed -i 's/session    required     pam_loginuid.so/session    optional     /' $PAMCONF
+sed -i 's/session    required     pam_loginuid.so/session    optional     pam_loginuid.so/' $PAMCONF
+
