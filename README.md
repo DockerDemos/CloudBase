@@ -5,11 +5,33 @@ Docker container for a push-button "Cloud-style" container
 
 Maintainer: Chris Collins \<collins.christopher@gmail.com\>
 
-Updated: 2014-05-19
+Updated: 2014-05-21
 
-##Caution##
+##Building and Running##
 
-This Docker Container is still being developed.
+This is a [Docker](http://docker.io) container image.  You need to have Docker installed to build and run the container.
+
+To build the image, change directories into the root of this repository, and run:
+
+`docker build -t cloudbase .` <-- note the period on the end
+
+Once it finished building, you can run the container with:
+
+`CONTAINER=$(docker run -d -P -e PUBKEY="<Your Public SSH KEY>" cloudbase)`
+
+This will assign a random port for you to SSH into, and place your public ssh key into the container so you can SSH into it.
+
+(If you need help generating SSH keys, check out [Step 2 on Github's guide](https://help.github.com/articles/generating-ssh-keys#step-2-generate-a-new-ssh-key).  You can ignore the rest of the steps.)
+
+To ssh into your container, first look up the port you were assigned:
+
+`sudo docker port $CONTAINER 22 | awk -F: '{print $2}'`
+
+Then run your SSH command:
+
+`ssh -i <path.to.your.private.key> clouduser@localhost:<port.you.were.assigned>`
+
+This will connect you to the container as the user "clouduser".  Clouduser has full sudo privileges, and does not requie a password to use them.
 
 ##Known Issues##
 
