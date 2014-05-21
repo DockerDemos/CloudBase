@@ -35,7 +35,7 @@ This will connect you to the container as the user "clouduser".  Clouduser has f
 
 ##Known Issues##
 
-Tracked on Github: [https://github.com/DockerDemos/Drupal/issues](https://github.com/DockerDemos/Drupal/issues)
+Tracked on Github: [https://github.com/DockerDemos/CloudBase/issues](https://github.com/DockerDemos/CloudBase/issues)
 
 ##Copyright Information##
 
