@@ -5,7 +5,7 @@ Docker container for a push-button "Cloud-style" container
 
 Maintainer: Chris Collins \<collins.christopher@gmail.com\>
 
-Updated: 2014-05-21
+Updated: 2014-10-09
 
 ##Building and Running##
 
@@ -29,7 +29,7 @@ To ssh into your container, first look up the port you were assigned:
 
 Then run your SSH command:
 
-`ssh -i <path.to.your.private.key> clouduser@localhost:<port.you.were.assigned>`
+`ssh -i <path.to.your.private.key> clouduser@localhost -p <port.you.were.assigned>`
 
 This will connect you to the container as the user "clouduser".  Clouduser has full sudo privileges, and does not requie a password to use them.
 
